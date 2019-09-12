@@ -1,33 +1,12 @@
-.imagenDeQuienSoy{
-    width: 100%;
-   
-    }
 body {
     font: 20px Montserrat, sans-serif;
+    font-family: Montserrat;
     line-height: 1.8;
     color: #f5f6f7;
-}
-p {font-size: 16px;}
-.margin {margin-bottom: 45px;}
-.bg-1 { 
-    background-color: #1abc9c; /* Green */
-    color: #ffffff;
-}
-.bg-2 { 
-    background-color: #474e5d; /* Dark Blue */
-    color: #ffffff;
-}
-.bg-3 { 
-    background-color: #ffffff; /* White */
-    color: #555555;
 }
 .bg-4 { 
     background-color: #2f2f2f; /* Black Gray */
     color: #fff;
-}
-.container-fluid {
-    padding-top: 70px;
-    padding-bottom: 70px;
 }
 .navbar {
     padding-top: 15px;
@@ -40,4 +19,49 @@ p {font-size: 16px;}
 }
 .navbar-nav  li a:hover {
     color: #1abc9c !important;
+}
+.p-section{
+    padding: 40px 0;
+}
+.bg-01{
+    background: url(../../../assets/imagenes/bg-1.jpg);
+}
+.tp img{
+    width: 3%;
+}
+.card-intro h1, .bio h1 {
+    margin: 0 0 10px 0; line-height: 1; font-weight: 700;
+  }
+  .card-intro p, .bio p { margin: 20px auto; font-size: 1.0rem; font-weight: 300;
+  }
+  @media only screen and (min-width: 992px) {
+    .card-intro h1, .bio h1 {
+      font-size: 8vw; letter-spacing: -5px;
+    }
+    .card-intro p, .bio p {
+      font-size: 25px;
+      padding: 15px 0 15px;
+      margin: 0;
+    }
+  }
+  
+  @media only screen and (min-width: 1600px) {
+    .card-intro h1, .bio h1 {
+      font-size: 8rem;
+    }
+  }
+
+  .down a:hover{
+      color: cornflowerblue;
+  }
+.titulos h6{
+    color: cornflowerblue;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+.juego img{
+    width:50%;
+}
+.juego p{
+    font-size: initial;
 }
