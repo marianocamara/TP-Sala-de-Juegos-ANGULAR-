@@ -65,3 +65,6 @@ body {
 .juego p{
     font-size: initial;
 }
+.bio img{
+  border-radius: 10%;
+}

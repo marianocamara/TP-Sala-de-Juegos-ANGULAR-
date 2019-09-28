@@ -1,57 +1,49 @@
-<!--div style="margin: 20% auto; width: 30%;">
-  <div class="row">
-    <div class="col-lg-6">
-      Usuario
-    </div>
-    <div class="col-lg-6">
-      <input type="text"  [(ngModel)]="usuario">
-    </div>
-  </div>
-  <div class="row" style="margin-top: 5px">
-    <div class="col-lg-6">
-      Clave
-    </div>
-    <div class="col-lg-6">
-      <input type="password" [(ngModel)]="clave">
-    </div>
-  </div>
-  <div class="row" style="text-align: center; margin-top: 10px">
-    <div class="col-lg-12">
-      <button (click)="Entrar()" class="btn btn-info btn-lg" >Entrar</button>
-    </div>
-  </div>
-</div-->
- <div class="container" >
-  <div class="jumbotron" style="padding:50px;">
-    <form action="return true;">
-      <div class="imgcontainer">
-        <img src="./assets/imagenes/login.png" alt="Avatar" class="avatar" max-width="104" >
-      </div>
-
-      <div class="container">
-        <label><b>Usuario</b></label>
-        <input type="text" placeholder="Usuario"  [(ngModel)]="usuario"  name="uname" required>
-
-        <label><b>Clave</b></label>
-        <input type="password" placeholder="Clave"  [(ngModel)]="clave" name="psw" required>
-            
-        <button *ngIf="logeando"  (click)="MoverBarraDeProgreso()" >Ingresar</button>
-       
+<div class="limiter">
+  <div class="container-login100">
+    <div class="wrap-login100">
+      <form class="login100-form validate-form">
+        
+        <div class="wrap-input100 rs1-wrap-input100 validate-input m-b-20" data-validate="Type user name">
+          <input id="first-name" class="input100" type="text" placeholder="Usuario" [(ngModel)]="usuario" name="uname" required >
+          <span class="focus-input100"></span>
+        </div>
+        <div class="wrap-input100 rs2-wrap-input100 validate-input m-b-20" data-validate="Type password">
+          <input class="input100" type="password" placeholder="Contraseña" [(ngModel)]="clave" name="psw" required>
+          <span class="focus-input100"></span>
+        </div>
+        
+        <div class="container-login100-form-btn">
+          <button class="login100-form-btn"  *ngIf="logeando"  (click)="Entrar()">
+            Ingresar
+          </button>
+        </div>
         <div *ngIf="!logeando" class="progress">
             <div class="progress-bar progress-bar-info progress-bar-striped active" [class]="clase" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" [style.width]="ProgresoDeAncho" >
               {{progresoMensaje}} - {{progreso}}%
             </div>
+          </div>
+        
+        <div class="w-full text-center p-t-27 datos">
+            <input type="checkbox" checked="checked"> Recordar mis datos
+          </div>
+        <div class="w-full text-center  p-b-239 p-t-10">
+          <span class="txt1">
+            ¿Olvidaste tu
+          </span>
+          
+          <a href="#" class="txt2">
+            usuario/contraseña?
+          </a>
+          
         </div>
-       
-        <input type="checkbox" checked="checked"> Recordar mis datos
-      </div>
-
-      <div class="container" style="background-color:#f1f1f1">
-        <button type="button" class="cancelbtn">Cancelar</button>
-        <button type="button" class="aceptbtn" routerLink="/Registro" >Registrarse</button>
-        <span class="psw">Te olvidaste <a href="#">la clave?</a></span>
-      </div>
-     
-    </form>
+        <div class="w-full text-center">
+          <a class="txt3" routerLink="/Registro">
+            Registrarse
+          </a>
+        </div>
+      </form>
+      
+      <div class="login100-more" style="background-image: url('./assets/imagenes/login.jpg');"></div>
+    </div>
   </div>
 </div>
