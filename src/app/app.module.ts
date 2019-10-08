@@ -54,6 +54,21 @@ import { AgmCoreModule } from '@agm/core';
 import { InputJugadoresComponent } from './componentes/input-jugadores/input-jugadores.component';
 import { SexoPipe } from './pipes/sexo.pipe';
 
+import { AngularFireModule } from "@angular/fire";
+import { AngularFireAuthModule } from "@angular/fire/auth";
+import { AuthService } from './servicios/auth/auth.service';
+import { AngularFirestore } from '@angular/fire/firestore';
+
+var config = {
+  apiKey: "AIzaSyByZWguTP_-JCZ6rN2iNxDSHXRX6qFpIfA",
+    authDomain: "tpsaladejuegos-b2a2e.firebaseapp.com",
+    databaseURL: "https://tpsaladejuegos-b2a2e.firebaseio.com",
+    projectId: "tpsaladejuegos-b2a2e",
+    storageBucket: "",
+    messagingSenderId: "74362303808",
+    appId: "1:74362303808:web:15e3859a73c5f69b0536a5"
+};
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -85,6 +100,8 @@ import { SexoPipe } from './pipes/sexo.pipe';
     FormsModule,
     RuteandoModule,
     HttpModule,
+    AngularFireModule.initializeApp(config),
+    AngularFireAuthModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyB6f8x4IjRlesQ3oETc6BXYQHVRTOlY3Ys'
     })
@@ -92,7 +109,7 @@ import { SexoPipe } from './pipes/sexo.pipe';
     // importo el ruteo
     // RouterModule.forRoot(MiRuteo)
   ],
-  providers: [ JuegoServiceService, MiHttpService,PaisesService,ArchivosJugadoresService,JugadoresService],
+  providers: [ JuegoServiceService, MiHttpService,PaisesService,ArchivosJugadoresService,JugadoresService, AuthService, AngularFirestore],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

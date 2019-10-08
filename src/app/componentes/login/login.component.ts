@@ -3,6 +3,9 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 import {Subscription} from "rxjs";
 import {TimerObservable} from "rxjs/observable/TimerObservable";
+import { AuthService } from '../../servicios/auth/auth.service';
+
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -22,7 +25,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private router: Router) {
+    private router: Router,
+    private  authService:  AuthService) {
       this.progreso=0;
       this.ProgresoDeAncho="0%";
 
@@ -32,9 +36,7 @@ export class LoginComponent implements OnInit {
   }
 
   Entrar() {
-    if (this.usuario === 'admin' && this.clave === 'admin') {
-      this.router.navigate(['/Principal']);
-    }
+    this.authService.SignIn(this.usuario, this.clave);
   }
   MoverBarraDeProgreso() {
     

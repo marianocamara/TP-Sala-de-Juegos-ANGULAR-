@@ -2,37 +2,25 @@
 <!--app-menu></app-menu-->
 <!-- index.html -->
 
-
-<form name="juego">
-<ul>
-   <li>
-   Primer número: <input [(ngModel)]="nuevoJuego.numeroIngresado" placeholder="ingrese numero" name="numeroIngresado" type="text" class="form-control" style="width:50%" readonly/>
-  
-  </li>
-  <li>
-   Operador: <input [(ngModel)]="nuevoJuego.numeroIngresado" placeholder="ingrese numero" name="numeroIngresado" type="text" class="form-control" style="width:50%" readonly/>
-    
-  </li>
-  <li>
-   Segundo número: <input [(ngModel)]="nuevoJuego.numeroIngresado" placeholder="ingrese numero" name="numeroIngresado" type="text" class="form-control" style="width:50%" readonly/>
-    
-  </li>
-  <li>
-    Respuesta: <input [(ngModel)]="nuevoJuego.numeroIngresado" placeholder="ingrese numero" name="numeroIngresado" type="text" class="form-control" style="width:50%"/>
+<div class="container">
+  <div class="row">
+      <div class="col-md-6"><img src="./assets/imagenes/calculating.png" alt=""></div>
+    <div class="col-md-4">
+      <input  placeholder="{{nuevoJuego.primerNumero}}" name="numeroIngresado" type="text" class="centro" style="width:100%;" readonly/>
+      <div>
+        <input placeholder="{{nuevoJuego.operando}}" name="numeroIngresado" type="text" class="centro" style="width:75%;" readonly/>
+        <input placeholder="{{nuevoJuego.segundoNumero}}" name="numeroIngresado" type="text" class="centro" style="width:25%; float:right;" readonly/>
+        <div class="separator"></div>
+        <input [(ngModel)]="nuevoJuego.eleccionUsuario" placeholder="respuesta" name="numeroIngresado" type="text" class="form-control" style="width:100%;color:#17a2b8;"/>
+        <div>
+          <h2 [hidden]="!ocultarVerificar" class="mt-3 float-right"><button  (click)="NuevoJuego()"  class="btn btn-info btn-lg">Nuevo juego</button></h2>
+          <h2 [hidden]="ocultarVerificar" class="mt-3 text-right">Tiempo restante: {{Tiempo}}</h2>      
+          <h2 [hidden]="ocultarVerificar" class="mt-3 float-right"><button (click)="verificar()" class="btn btn-success btn-lg">Ingresar respuesta </button></h2>
+        </div>
+      </div>
+    </div>
      
-   </li>
-  <li>
-    <h2 [hidden]="ocultarVerificar" ><button (click)="verificar()" class="btn btn-success btn-lg">Verificar {{Tiempo}} </button></h2>
-  </li>
-  <li>
-    <h2 [hidden]="!ocultarVerificar"><button  (click)="NuevoJuego()"  class="btn btn-info btn-lg">Nuevo</button></h2>
-  </li>
-  <li>
-    <h2><p><i class="fa fa-spinner fa-spin"></i>Esperando numero...</p></h2>
-
-    <h3 [hidden]="!nuevoJuego.gano">usted adivino el número</h3>
-    <h3 [hidden]="nuevoJuego.gano">usted aún no gano </h3>
-  </li>
-</ul>
-
-</form>
+  </div>
+<div *ngIf="nuevoJuego.gano == true">
+  <iframe src="https://giphy.com/embed/ZEU9ryYGZzttn0Cva7" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+  </div>

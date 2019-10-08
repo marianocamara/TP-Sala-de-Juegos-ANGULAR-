@@ -9,40 +9,64 @@ import {TimerObservable} from "rxjs/observable/TimerObservable";
   styleUrls: ['./agilidad-aritmetica.component.css']
 })
 export class AgilidadAritmeticaComponent implements OnInit {
-   @Output() 
+  @Output() 
   enviarJuego :EventEmitter<any>= new EventEmitter<any>();
   nuevoJuego : JuegoAgilidad;
   ocultarVerificar: boolean;
   Tiempo: number;
   repetidor:any;
   private subscription: Subscription;
+  Mensajes:string;
+  n1:string;
+  n2:string;
+
+
   ngOnInit() {
   }
    constructor() {
      this.ocultarVerificar=true;
-     this.Tiempo=5; 
+     this.Tiempo=10;
+     this.NuevoJuego(); 
     this.nuevoJuego = new JuegoAgilidad();
-    console.info("Inicio agilidad");  
+    console.info("Inicio agilidad");
+      
   }
   NuevoJuego() {
     this.ocultarVerificar=false;
    this.repetidor = setInterval(()=>{ 
       
       this.Tiempo--;
-      console.log("llego", this.Tiempo);
+      console.log("Tiempo restante:", this.Tiempo);
       if(this.Tiempo==0 ) {
         clearInterval(this.repetidor);
         this.verificar();
         this.ocultarVerificar=true;
-        this.Tiempo=5;
+        this.Tiempo=10;
+        this.enviarJuego.emit(this.nuevoJuego);
       }
       }, 900);
+      this.nuevoJuego = new JuegoAgilidad();
+      console.info(this.nuevoJuego );  
+      console.info("Nuevos Valores");
 
   }
   verificar()
   {
-    this.ocultarVerificar=false;
-    clearInterval(this.repetidor);
+    //this.ocultarVerificar=false;
+    //clearInterval(this.repetidor);
+   
+    if (this.nuevoJuego.verificar()) 
+    {
+      this.ocultarVerificar=true;
+      this.nuevoJuego.gano=true;
+      this.enviarJuego.emit(this.nuevoJuego);
+      clearInterval(this.repetidor);
+      console.log("ganaste");
+    }
+    else
+    {
+      console.log("perdiste");
+    }
    
 
    
