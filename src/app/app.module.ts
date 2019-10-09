@@ -58,6 +58,13 @@ import { AngularFireModule } from "@angular/fire";
 import { AngularFireAuthModule } from "@angular/fire/auth";
 import { AuthService } from './servicios/auth/auth.service';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import {MatButtonModule} from '@angular/material/button';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatCardModule} from '@angular/material/card';
+import { TatetiComponent } from './componentes/tateti/tateti.component';
+import { PiedraPapelTijeraComponent } from './componentes/piedra-papel-tijera/piedra-papel-tijera.component';
 
 var config = {
   apiKey: "AIzaSyByZWguTP_-JCZ6rN2iNxDSHXRX6qFpIfA",
@@ -93,7 +100,9 @@ var config = {
     MapaDeGoogleComponent,
     JugadoresListadoComponent,
     InputJugadoresComponent,
-    SexoPipe
+    SexoPipe,
+    TatetiComponent,
+    PiedraPapelTijeraComponent
   ],
   imports: [
     BrowserModule,
@@ -102,9 +111,13 @@ var config = {
     HttpModule,
     AngularFireModule.initializeApp(config),
     AngularFireAuthModule,
+    MatButtonModule,
+    MatSnackBarModule,
+    MatCardModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyB6f8x4IjRlesQ3oETc6BXYQHVRTOlY3Ys'
-    })
+    }),
+    BrowserAnimationsModule
     // NgbModule.forRoot(MiRuteo),
     // importo el ruteo
     // RouterModule.forRoot(MiRuteo)

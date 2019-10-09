@@ -8,3 +8,13 @@ input{
     width: 50%;
     float: right;
 }
+.respuesta{
+    border: 2px solid #17a2b8;
+    margin-top: 15px;
+}
+.box-s{
+    border: 1px solid gainsboro;
+    border-radius: 10px;
+    box-shadow: 10px 10px 15px 0px #c5c5c56e;
+    padding:30px;
+}
