@@ -3,6 +3,8 @@ export abstract class Juego {
   public jugador: string;
   public gano = false;
   public id;
+  public ganadas:number;
+  public perdidas:number;
   public partidas;
 
   constructor(nombre?: string, gano?: boolean,jugador?:string, partidas?:string) {

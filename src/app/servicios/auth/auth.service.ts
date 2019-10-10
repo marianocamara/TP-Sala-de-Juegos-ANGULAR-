@@ -4,6 +4,7 @@ import { AngularFireAuth } from "@angular/fire/auth";
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Router } from "@angular/router";
 import { Juego } from '../../clases/juego';
+import * as firebase from 'firebase';
 
 @Injectable({
   providedIn: 'root'
@@ -92,15 +93,45 @@ export class AuthService {
   }
 
 
-  SetAgilidadData(juego) {
-    juego.id= Math.floor(Math.random() * Math.floor(6));
+  SetPuntajeGano(nombre:any, usuario:any) {
     const date = new Date();
-    const userRef: AngularFirestoreDocument<any> = this.afs.doc(`agilidad/${juego.id}`);
+    const userRef: AngularFirestoreDocument<any> = this.afs.doc(`${nombre}/${usuario.uid}`);
     const userData: any = {
-      id: juego.id,
+      uid: usuario.uid,
       createdAt: date.toLocaleDateString(),
-      jugador: juego.jugador,
-      partidas: juego.partidas
+      jugador: usuario.email.split('@')[0],
+      ganadas: firebase.firestore.FieldValue.increment(1),
+    }
+    return userRef.set(userData, {
+      merge: true
+    })
+
+  }
+  SetPuntajePerdio(nombre:any, usuario:any) {
+    const date = new Date();
+    const userRef: AngularFirestoreDocument<any> = this.afs.doc(`${nombre}/${usuario.uid}`);
+    const userData: any = {
+      uid: usuario.uid,
+      createdAt: date.toLocaleDateString(),
+      jugador: usuario.email.split('@')[0],
+      perdidas: firebase.firestore.FieldValue.increment(1),
+    }
+    return userRef.set(userData, {
+      merge: true
+    })
+
+  }
+
+
+  SetPuntajeAnagrama(cantPalabras, nombre:any, usuario:any) {
+    const date = new Date();
+    const userRef: AngularFirestoreDocument<any> = this.afs.doc(`${nombre}/${usuario.uid}`);
+    const userData: any = {
+      uid: usuario.uid,
+      createdAt: date.toLocaleDateString(),
+      jugador: usuario.email.split('@')[0],
+      partidas: firebase.firestore.FieldValue.increment(1),
+      palabrasAdivinadas: firebase.firestore.FieldValue.increment(cantPalabras),
     }
     return userRef.set(userData, {
       merge: true

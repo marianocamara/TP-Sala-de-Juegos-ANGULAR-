@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../../servicios/auth/auth.service';
 
 @Component({
   selector: 'app-tateti',
@@ -19,8 +20,11 @@ export class TatetiComponent implements OnInit {
   lastWinner: any;
   gameOver: boolean;
   boardLocked: boolean;
+  usuarioLogueado: any;
 
-  constructor() { }
+  constructor(public auth: AuthService) {
+    this.usuarioLogueado = JSON.parse(localStorage.getItem('user'));
+   }
 
   ngOnInit() {
     document.body.classList.add('bg-img');
@@ -137,11 +141,22 @@ export class TatetiComponent implements OnInit {
   addScore(winner) {
     if (winner === this.PLAYER_COMPUTER) {
       this.scoreComputer++;
+      this.CargarPuntaje(this.usuarioLogueado,0);
     }
     if (winner === this.PLAYER_HUMAN) {
       this.scoreHuman++;
+      this.CargarPuntaje(this.usuarioLogueado,1);
     }
   }
+
+  CargarPuntaje( usuario, resultado){
+    if(resultado){
+      this.auth.SetPuntajeGano("tateti", usuario);
+    }else{
+      this.auth.SetPuntajePerdio("tateti", usuario);
+    }
+  }
+    
 
  
 }

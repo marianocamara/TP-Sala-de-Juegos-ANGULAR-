@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../../servicios/auth/auth.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-anagrama',
@@ -16,8 +18,11 @@ export class AnagramaComponent implements OnInit {
   words = ["JUEGO", "AVION", "PROMOCION", "MONEDA", "COMPUTADORA", "CERVEZA", "ESCALAR",
     "PESCADO", "LAGO", "BOSQUE", "CAMARA", "ZAPATILLA", "SER", "PAIS",
     "VINOTECA", "MONTAÑA", "JUPITER", "EXTRATERRESTRE", "DIFICIL", "ABURRIDO", "AYUDA"];
+  usuarioLogueado: any;
 
-  constructor() { }
+    constructor(private snackBar: MatSnackBar,public auth: AuthService) {
+    this.usuarioLogueado = JSON.parse(localStorage.getItem('user'));
+   }
 
   ngOnInit() {
     this.initGame();
@@ -32,6 +37,7 @@ export class AnagramaComponent implements OnInit {
     this.displayWord();
     this.contador();
   }
+  
 
   isLetterVisible = () => {
     return this.letterAnimation === 1;
@@ -92,6 +98,14 @@ export class AnagramaComponent implements OnInit {
         this.seconds--;
       this.contador();
     }, 1000);
+  }
+
+  CargarPuntaje(){
+      this.auth.SetPuntajeAnagrama(this.score,"anagrama", this.usuarioLogueado);
+      this.snackBar.open('Resultados cargados', '', {
+        duration: 3000
+      });
+    
   }
 
 }

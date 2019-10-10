@@ -4,6 +4,7 @@ import { JuegoAgilidad } from '../../clases/juego-agilidad'
 import {Subscription} from "rxjs";
 import {TimerObservable} from "rxjs/observable/TimerObservable";
 import {MatSnackBar} from '@angular/material/snack-bar';
+import { AuthService } from '../../servicios/auth/auth.service';
 
 @Component({
   selector: 'app-agilidad-aritmetica',
@@ -20,18 +21,21 @@ export class AgilidadAritmeticaComponent implements OnInit {
   private subscription: Subscription;
   Mensajes:string;
   clase:string;
+  usuarioLogueado: any;
   
   
   
   ngOnInit() {
   }
-  constructor(private snackBar: MatSnackBar) {
+
+  constructor(private snackBar: MatSnackBar, public auth: AuthService) {
     this.ocultarVerificar=true;
     this.Tiempo=10;
     this.nuevoJuego = new JuegoAgilidad();
     this.nuevoJuego.primerNumero = 0;
     this.nuevoJuego.segundoNumero = 0;
     console.info("Inicio agilidad");
+    this.usuarioLogueado = JSON.parse(localStorage.getItem('user'));
     
   }
   NuevoJuego() {
@@ -70,20 +74,31 @@ export class AgilidadAritmeticaComponent implements OnInit {
         duration: 3000
       });
       this.clase = "bounce";
+      this.CargarPuntaje(this.usuarioLogueado,1);
+      console.info(this.nuevoJuego);
     }
     else
     {
       console.log("perdiste");
       this.snackBar.open('Respuesta incorrecta', '', {
-        duration: 30000
+        duration: 3000
       });
       if(this.Tiempo== 0){
       this.clase = "hinge";
       }else{
       this.clase="wobble";
       }
+      this.CargarPuntaje(this.usuarioLogueado,0);
     }
     
   }  
+  CargarPuntaje( usuario, resultado){
+    if(resultado){
+      this.auth.SetPuntajeGano("agilidad", usuario);
+    }else{
+      this.auth.SetPuntajePerdio("agilidad", usuario);
+    }
+    
+}
   
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../../servicios/auth/auth.service';
 
 @Component({
   selector: 'app-piedra-papel-tijera',
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PiedraPapelTijeraComponent implements OnInit {
   
-  constructor(
-    //public firebaseService: FirebaseService
-    ) { }
+  usuarioLogueado: any;
+
+  constructor(public auth: AuthService) {
+    this.usuarioLogueado = JSON.parse(localStorage.getItem('user'));
+    }
     
     ngOnInit() {
     }
@@ -79,11 +82,22 @@ export class PiedraPapelTijeraComponent implements OnInit {
         // YOU WIN
         this.theResult = 0;
         this.scores[0] = this.scores[0] + 1;
+        this.CargarPuntaje(this.usuarioLogueado,1);
       }
       else {
         // YOU LOSE
         this.theResult = 1;
         this.scores[1] = this.scores[1] + 1;
+        this.CargarPuntaje(this.usuarioLogueado,0);
       }
     }
+
+    CargarPuntaje( usuario, resultado){
+      if(resultado){
+        this.auth.SetPuntajeGano("piedra, papel o tijera", usuario);
+      }else{
+        this.auth.SetPuntajePerdio("piedra, papel o tijera", usuario);
+      }
+      
+  }
   }
