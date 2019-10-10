@@ -116,6 +116,7 @@ var config = {
     HttpModule,
     AngularFireModule.initializeApp(config),
     AngularFireAuthModule,
+    AngularFirestore,
     MatButtonModule,
     MatSnackBarModule,
     MatCardModule,

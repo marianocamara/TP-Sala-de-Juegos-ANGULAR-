@@ -3,6 +3,7 @@ import { auth, User } from 'firebase/app';
 import { AngularFireAuth } from "@angular/fire/auth";
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Router } from "@angular/router";
+import { Juego } from '../../clases/juego';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +11,7 @@ import { Router } from "@angular/router";
 export class AuthService {
   userData: any; // Save logged in user data
   user:User;
+  juego:Juego;
 
   constructor(public afs: AngularFirestore,   // Inject Firestore service
     public afAuth: AngularFireAuth, // Inject Firebase auth service
@@ -87,5 +89,22 @@ export class AuthService {
       localStorage.removeItem('user');
       this.router.navigate(['Login']);
     })
+  }
+
+
+  SetAgilidadData(juego) {
+    juego.id= Math.floor(Math.random() * Math.floor(6));
+    const date = new Date();
+    const userRef: AngularFirestoreDocument<any> = this.afs.doc(`agilidad/${juego.id}`);
+    const userData: any = {
+      id: juego.id,
+      createdAt: date.toLocaleDateString(),
+      jugador: juego.jugador,
+      partidas: juego.partidas
+    }
+    return userRef.set(userData, {
+      merge: true
+    })
+
   }
 }
