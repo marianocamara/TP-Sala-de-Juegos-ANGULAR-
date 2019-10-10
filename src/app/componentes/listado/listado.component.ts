@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { JuegoServiceService } from '../../servicios/juego-service.service';
+import { DbServiceService } from '../../servicios/db-service.service';
 
 @Component({
   selector: 'app-listado',
@@ -8,26 +9,30 @@ import { JuegoServiceService } from '../../servicios/juego-service.service';
 })
 export class ListadoComponent implements OnInit {
   public listadoParaCompartir: Array<any>;
-   miServicioJuego:JuegoServiceService
 
-  constructor(servicioJuego:JuegoServiceService) {
-    this.miServicioJuego = servicioJuego;
+  isLoading: boolean = false;
+  listado: any;
+
+  constructor(private dbService: DbServiceService) {
     
   }
   
   ngOnInit() {
-    
+    this.isLoading = true;
+    this.dbService.GetUsers()
+      .then(result => {
+        this.isLoading = false;
+        console.log(result);
+        this.listado = result;
+      })
   }
-
-  llamaService(){
-    console.log("llamaService");
-    this.listadoParaCompartir= this.miServicioJuego.listar();
-  }
-
-  llamaServicePromesa(){
-    console.log("llamaServicePromesa");
-    this.miServicioJuego.listarPromesa().then((listado) => {
-        this.listadoParaCompartir = listado;
-    });
+  Traer() {
+    this.isLoading = true;
+    this.dbService.GetUsers()
+      .then(result => {
+        this.isLoading = false;
+        console.log(result);
+        this.listado = result;
+      })
   }
 }

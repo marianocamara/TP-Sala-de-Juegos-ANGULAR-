@@ -9,6 +9,7 @@ import { Router } from "@angular/router";
 })
 export class AuthService {
   userData: any; // Save logged in user data
+  user:User;
 
   constructor(public afs: AngularFirestore,   // Inject Firestore service
     public afAuth: AngularFireAuth, // Inject Firebase auth service
@@ -48,13 +49,13 @@ export class AuthService {
   sign up with username/password and sign in with social auth  
   provider in Firestore database using AngularFirestore + AngularFirestoreDocument service */
   SetUserData(user) {
+    const date = new Date();
     const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
     const userData: any = {
       uid: user.uid,
-      email: user.email,
-      displayName: user.displayName,
-      photoURL: user.photoURL,
-      emailVerified: user.emailVerified
+      createdAt: date.toLocaleDateString(),
+      name: user.email.split('@')[0],
+      mail: user.email
     }
     return userRef.set(userData, {
       merge: true

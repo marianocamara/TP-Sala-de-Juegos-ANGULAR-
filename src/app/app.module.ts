@@ -67,6 +67,7 @@ import { TatetiComponent } from './componentes/tateti/tateti.component';
 import { PiedraPapelTijeraComponent } from './componentes/piedra-papel-tijera/piedra-papel-tijera.component';
 import { TituloComponent } from './componentes/titulo/titulo.component';
 import { SimonComponent } from './componentes/simon/simon.component';
+import { DbServiceService } from './servicios/db-service.service';
 
 var config = {
   apiKey: "AIzaSyByZWguTP_-JCZ6rN2iNxDSHXRX6qFpIfA",
@@ -126,7 +127,7 @@ var config = {
     // importo el ruteo
     // RouterModule.forRoot(MiRuteo)
   ],
-  providers: [ JuegoServiceService, MiHttpService,PaisesService,ArchivosJugadoresService,JugadoresService, AuthService, AngularFirestore],
+  providers: [ JuegoServiceService, MiHttpService,PaisesService,ArchivosJugadoresService,JugadoresService, AuthService, AngularFirestore, DbServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

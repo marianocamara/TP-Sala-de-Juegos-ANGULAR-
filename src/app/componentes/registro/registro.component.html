@@ -1,129 +1,39 @@
-<body>
-  <div class="jumbotron">
-    <h2 id="terminos">Terminos y condiciones</h2>
-    <p>El Gobierno de la República Argentina (en adelante el “Gobierno Nacional”) no es responsable por los daños y perjuicios que puedan surgir, incluyendo, sin límite, daños, pérdidas o gastos directos, indirectos, que surjan en relación con el uso de los Activos Digitales o la imposibilidad de uso, en relación con cualquier falla en el vencimiento, error, omisión, interrupción, defecto, demora en la operación o transmisión, virus de computadora o falla del sistema de línea, aún en el caso de que el Gobierno Nacional o sus representantes fueran informados sobre la posibilidad de dichos daños, pérdidas o gastos.</p>
-    <p>El Gobierno Nacional no controla ni garantiza la ausencia de virus ni de otros elementos en los contenidos que puedan producir alteraciones en su sistema informático (software y hardware) o en los documentos electrónicos y ficheros almacenados en su sistema informático.</p>
-    <p>El Gobierno Nacional no puede garantizar que la transmisión de información por parte de los Usuarios sea completamente segura. El Usuario asume este riesgo.</p>
-   
-  </div>
-  <strong><p>No leer lo anterior, es solo un ejemplo sacado de https://www.argentina.gob.ar/terminos-y-condiciones </p></strong>
-  <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Acepto</button>
-  <button  class="cancelbtn"  routerLink="/Principal" style="width:auto;">No acepto</button>
-  <div id="id01" class="modal">
-    <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">×</span>
-    <form class="modal-content animate" >
-      <div class="container">
-        <label><b>Email</b></label>
-        <input type="text" placeholder="Ingresa tu correo" name="email" required>
-  
-        <label><b>Clave</b></label>
-        <input type="password" placeholder="Aca la clave" name="psw" required>
-  
-        <label><b>Repita la clave</b></label>
-        <input type="password" placeholder="Aca repeti la misa clave  de arriba" name="psw-repeat" required>
-        <input type="checkbox" checked="checked">Recordar mis datos
-        <p>creando la cuenta aceptando los<a  onclick="document.getElementById('id01').style.display='none'"  >Terminos y condiciones</a>.</p>
-  
-        <div class="clearfix">
-          <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Me arrepenti</button>
-          <button type="submit" class="signupbtn">Registrarme</button>
-        </div>
-      </div>
-    </form>
-  </div>
-  
-  <script>
-  // Get the modal
-  var modal = document.getElementById('id01');
-  
-  // When the user clicks anywhere outside of the modal, close it
-  window.onclick = function(event) {
-      if (event.target == modal) {
-          modal.style.display = "none";
-      }
-  }
-  </script>
-  
-  </body>
 
-  <div class="limiter">
-      <div class="container-login100">
-        <div class="wrap-login100">
-            <div class="login100-more" style="background-image: url('./assets/imagenes/register.jpg');"></div>
-          <form class="login100-form validate-form">
-            
-            <div class="wrap-input100 rs1-wrap-input100 validate-input m-b-20" data-validate="Type user name">
-              <input id="first-name" class="input100" type="text" placeholder="Usuario" [(ngModel)]="usuario" name="uname" required >
-              <span class="focus-input100"></span>
-            </div>
-            <div class="wrap-input100 rs2-wrap-input100 validate-input m-b-20" data-validate="Type password">
-              <input class="input100" type="password" placeholder="Contraseña" [(ngModel)]="clave" name="psw" required>
-              <span class="focus-input100"></span>
-            </div>
-            
-            <div class="container-login100-form-btn">
-              <button class="login100-form-btn"  *ngIf="logeando"  (click)="Entrar()">
-                Ingresar
-              </button>
-            </div>
-            <div *ngIf="!logeando" class="progress">
-                <div class="progress-bar progress-bar-info progress-bar-striped active" [class]="clase" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" [style.width]="ProgresoDeAncho" >
-                  {{progresoMensaje}} - {{progreso}}%
-                </div>
-              </div>
-            
-            <div class="w-full text-center p-t-27 datos">
-                <input type="checkbox" checked="checked"> Recordar mis datos
-              </div>
-            <div class="w-full text-center  p-b-239 p-t-10">
-              <span class="txt1">
-                ¿Olvidaste tu
-              </span>
-              
-              <a href="#" class="txt2">
-                usuario/contraseña?
-              </a>
-              
-            </div>
-            <div class="w-full text-center">
-              <a class="txt3" routerLink="/Registro">
-                Registrarse
-              </a>
-            </div>
-          </form>
+
+<div class="limiter">
+  <div class="container-login100">
+    <div class="wrap-login100">
+      <div class="login100-more" style="background-image: url('./assets/imagenes/register.jpg');"></div>
+      <form class="login100-form validate-form">
+        
+        <div class="wrap-input100 rs1-wrap-input100 validate-input m-b-20" data-validate="Type user name">
+          <input id="first-name" class="input100" type="text" placeholder="Usuario" [(ngModel)]="usuario" name="uname" required >
+          <span class="focus-input100"></span>
+        </div>
+        <div class="wrap-input100 rs2-wrap-input100 validate-input m-b-20" data-validate="Type password">
+          <input class="input100" type="password" placeholder="Contraseña" [(ngModel)]="clave" name="psw" required>
+          <span class="focus-input100"></span>
+        </div>
+        
+        <div class="w-full text-center p-t-27 datos">
+          <input type="checkbox" checked="checked"> Acepto los Terminos y Condiciones
+        </div>
+        <div class="w-full text-center  p-b-239 p-t-10">
+          <span class="txt1">
+            ¿Olvidaste tu
+          </span>
           
-         
+          <a class="txt2">
+            usuario/contraseña?
+          </a>
+          
         </div>
-      </div>
+        <button class="login100-form-btn"   (click)="Registrar()">
+            Registrarse
+          </button>
+      </form>
+      
+      
     </div>
-    
-
-    <div class="displayTable">
-      <div class="displayTableCell">
-    
-        <div class="authBlock">
-          <h3>Sign Up</h3>
-    
-          <div class="formGroup">
-            <input type="email" class="formControl" placeholder="Email Address" #userEmail required>
-          </div>
-    
-          <div class="formGroup">
-            <input type="password" class="formControl" placeholder="Password" #userPwd required>
-          </div>
-    
-          <div class="formGroup">
-            <input type="button" class="btn btnPrimary" value="Sign Up" (click)="authService.SignUp(userEmail.value, userPwd.value)">
-          </div>
-    
-          <div class="formGroup">
-            <span class="or"><span class="orInner">Or</span></span>
-          </div>
-    
-    
-        <div class="redirectToLogin">
-          <span>Already have an account? <span class="redirect" routerLink="/Login">Log In</span></span>
-        </div>
-      </div>
-    
-    </div>
+  </div>
+</div>

@@ -14,8 +14,8 @@ import { AuthService } from '../../servicios/auth/auth.service';
 export class LoginComponent implements OnInit {
 
   private subscription: Subscription;
-  usuario = '';
-  clave= '';
+  usuario = 'invitado@juegos.com';
+  clave= 'invitado';
   progreso: number;
   progresoMensaje="esperando..."; 
   logeando=true;
