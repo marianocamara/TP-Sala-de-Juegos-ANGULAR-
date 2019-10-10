@@ -1,34 +1,25 @@
-<nav class="navbar navbar-expand-md navbar-dark bg-dark">
-  <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Menu</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link"  routerLink="/">Inicio</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-item nav-link" href="https://github.com/marianocamara"target="_blank"><i class="fa fa-github"></i> GitHub</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-item nav-link" routerLink="/QuienSoy" ><i class="fa fa-user"></i> Quien Soy? </a>
-      </li>
-    </ul>
-  </div>
-  <div class="mx-auto order-0">
-    <a class="navbar-brand mx-auto" routerLink="/">Sala de Juegos</a>
-  </div>
-  <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
-    <ul class="navbar-nav ml-auto">
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/Registro">Registrarse</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link text-info" routerLink="/Login">Ingresar</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link text-info" (click)="authService.SignOut()">Cerrar sesion</a>
-      </li>
-    </ul>
-  </div>
-</nav>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+      <a class="navbar-brand" routerLink="/"><strong> Sala de Juegos</strong></a>
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item active">
+          <a class="nav-link" routerLink="/">Home</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" routerLink="/QuienSoy" ><i class="fa fa-user"></i> Quien Soy? </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="https://github.com/marianocamara"target="_blank"><i class="fa fa-github"></i> GitHub</a>
+        </li>
+      </ul>
+      
+      <div class="form-inline my-2 my-lg-0">
+          <a class="nav-link text-info" routerLink="/Login">Ingresar</a>
+          <a class="nav-link text-info" routerLink="/Registro">Registrarse</a>
+          <a class="nav-link text-info" (click)="authService.SignOut()">Cerrar sesion</a>
+      </div>
+    </div>
+  </nav>

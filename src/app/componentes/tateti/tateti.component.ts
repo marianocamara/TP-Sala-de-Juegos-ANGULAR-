@@ -7,9 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TatetiComponent implements OnInit {
 
-  PLAYER_COMPUTER = { name: 'CPU', symbol: 'O' };
-  PLAYER_HUMAN = { name: 'Vos', symbol: 'X' };
-  DRAW = { name: 'Draw' };
+  PLAYER_COMPUTER = { name: 'Enemigo', symbol: 'O' };
+  PLAYER_HUMAN = { name: 'Jugador', symbol: 'X' };
+  DRAW = { name: 'Empate' };
 
   scoreHuman = 0;
   scoreComputer = 0;
@@ -23,7 +23,9 @@ export class TatetiComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    document.body.classList.add('bg-img');
     this.newGame();
+    
   }
 
   square_click(square) {
@@ -41,10 +43,11 @@ export class TatetiComponent implements OnInit {
       square.value = this.PLAYER_COMPUTER.symbol;
       this.completeMove(this.PLAYER_COMPUTER);
       this.boardLocked = false;
-    }, 600);
+    }, 1000);
   }
 
   completeMove(player) {
+    
     if (this.isWinner(player.symbol))
       this.showGameOver(player);
     else if (!this.availableSquaresExist())
@@ -59,9 +62,11 @@ export class TatetiComponent implements OnInit {
 
   availableSquaresExist(): boolean {
     return this.board.filter(s => s.value == '').length > 0;
+    
   }
 
   getRandomAvailableSquare(): any {
+
     let availableSquares = this.board.filter(s => s.value === '');
     var squareIndex = this.getRndInteger(0, availableSquares.length - 1);
 

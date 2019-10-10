@@ -1,58 +1,48 @@
-<div class="contenedor">
-    <!-- Juego -->
-    <div class="content">
-        <div class="card text-center">
-            <div class="card-body">
-                <div class="">
-                    <h2> Jugador</h2>
-                </div>
-                <h3> Elegi una opcion: </h3>
-                <div class="content2">
-                    <i (click)="pick(0)" [ngClass]="{'selectedWeapon':(playerSelected === 0)}" class="fa fa-hand-rock-o"></i>
-                    <i (click)="pick(1)" [ngClass]="{'selectedWeapon':(playerSelected === 1)}" class="fa fa-hand-paper-o"></i>
-                    <i (click)="pick(2)" [ngClass]="{'selectedWeapon':(playerSelected === 2)}" class="fa fa-hand-scissors-o"></i>
-                </div>
-                <div class="score btn btn-primary">Ganaste {{ scores[0] }} veces</div>
+<app-titulo titulo="Elige tu arma y compite contra el campeon de Piedra, papel o tijera"></app-titulo>
+
+    <div class="juego">
+        <div id="score-board" class="score-board animated fadeInUp">
+            <div id="user-label" class="badge">Jugador</div>
+            <div id="computer-label" class="badge pc">Oponente</div>
+            <span id="user-scored">{{ scores[0] }}</span> : <span id="computer-scored">{{ scores[1] }}</span>
+        </div>
+        <div class="choices animated bounceIn">
+            <div class="armas">
+            <div id="rock" class="choice col-md-2 col-4">
+                <img (click)="pick(0)" [ngClass]="{'selectedWeapon':(playerSelected === 0)}" width="150" height="150" src="./assets/imagenes/maloik.png"/>
+            </div>
+            <div id="paper" class="choice col-md-2 col-4">
+                <img (click)="pick(1)" [ngClass]="{'selectedWeapon':(playerSelected === 1)}" width="150" height="150" src="./assets/imagenes/edit.png"/>
+            </div>
+            <div id="scissors" class="choice col-md-2 col-4">
+                <img (click)="pick(2)" [ngClass]="{'selectedWeapon':(playerSelected === 2)}" idth="150" height="150" src="./assets/imagenes/scissors.png"/>
             </div>
         </div>
-        <div class="card text-center">
-            <div class="card-body">
-                <div class="">
-                    <h2> Enemigo</h2>
-                    <button class="score btn btn-secondary">{{ scores[1] }}</button>
-                </div>
-                <br><br>
-
-                <div *ngIf="enemySelected !== -1" class="flex-container flex-center">
-                    <i *ngIf="enemySelected === 0" class="fa fa-hand-rock-o"></i>
-                    <i *ngIf="enemySelected === 1" class="fa fa-hand-paper-o"></i>
-                    <i *ngIf="enemySelected === 2" class="fa fa-hand-scissors-o"></i>
+            <p id="action-message">Elegi tu arma!</p>
+            <div class="resultados animated fadeInUp" *ngIf="jugo">
+            <div *ngIf="enemySelected !== -1" class="flex-container flex-center">
+                <h3 *ngIf="enemySelected === 0">Tu oponente eligió <img width="45" height="45" src="./assets/imagenes/maloik.png"/></h3>
+                <h3 *ngIf="enemySelected === 1">Tu oponente eligió <img width="45" height="45" src="./assets/imagenes/edit.png"/></h3>
+                <h3 *ngIf="enemySelected === 2">Tu oponente eligió <img width="45" height="45" src="./assets/imagenes/scissors.png"/></h3>
+            </div>
+            <div class="flex-container flex-center" *ngIf="loading">
+                <h3>Tu oponente esta preparando su arma!</h3>
+            </div>
+            <!-- Resultados -->
+            <div *ngIf="!loading && isResultShow" class="flex-container flex-center resultado" style="flex-direction: column">
+                <div [ngSwitch]="theResult">
+                    <ng-template [ngSwitchCase]="0">
+                        <h3> {{arma}} mata a {{arma2}}. Ganaste!</h3>
+                    </ng-template>
+                    <ng-template [ngSwitchCase]="1">
+                        <h3> {{arma2}} mata a {{arma}}. Perdiste! </h3>
+                    </ng-template>
+                    <ng-template [ngSwitchCase]="2">
+                        <h3>{{arma}} y {{arma2}} se cancelan. Empate! </h3>
+                    </ng-template>
+                    <ng-template ngSwitchDefault> </ng-template>
                 </div>
             </div>
         </div>
-
-    </div>
-
-    <!-- Resultados -->
-    <div *ngIf="!loading && isResultShow" class="flex-container flex-center" style="flex-direction: column">
-        <div [ngSwitch]="theResult">
-            <ng-template [ngSwitchCase]="0">
-                <h1> Has ganado! </h1>
-            </ng-template>
-            <ng-template [ngSwitchCase]="1">
-                <h1> Perdiste </h1>
-            </ng-template>
-            <ng-template [ngSwitchCase]="2">
-                <h1>Empate! </h1>
-            </ng-template>
-            <ng-template ngSwitchDefault> </ng-template>
         </div>
-        <p> Vuelve a elegir</p>
-        <button class="btn btn-dark text-uppercase mb-2 rounded-pill shadow-sm" (click)="reset()">
-            Reiniciar juego</button>
     </div>
-
-    <div class="flex-container flex-center" *ngIf="loading">
-        <h1>3 2 1 ... YA!</h1>
-    </div>
-</div>

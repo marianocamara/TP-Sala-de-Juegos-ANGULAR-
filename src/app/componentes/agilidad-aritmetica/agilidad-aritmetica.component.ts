@@ -74,8 +74,8 @@ export class AgilidadAritmeticaComponent implements OnInit {
     else
     {
       console.log("perdiste");
-      this.snackBar.open('Rspuesta incorrecta', '', {
-        duration: 3000
+      this.snackBar.open('Respuesta incorrecta', '', {
+        duration: 30000
       });
       if(this.Tiempo== 0){
       this.clase = "hinge";
@@ -83,8 +83,6 @@ export class AgilidadAritmeticaComponent implements OnInit {
       this.clase="wobble";
       }
     }
-    
-    
     
   }  
   

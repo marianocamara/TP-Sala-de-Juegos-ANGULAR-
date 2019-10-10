@@ -21,7 +21,6 @@ button {
     margin: 8px 0;
     border: none;
     cursor: pointer;
-    width: 100%;
 }
 
 button:hover {
@@ -48,10 +47,6 @@ img.avatar {
     border-radius: 50%;
 }
 
-.container {
-    padding: 16px;
-}
-
 span.psw {
     float: right;
     padding-top: 16px;
@@ -68,29 +63,37 @@ span.psw {
     }
 }
 
+#snackbar {
+	position: relative;
+	background: #8080ff;
+	border-radius: .4em;
+}
 
+#snackbar:after {
+	content: '';
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	width: 0;
+	height: 0;
+	border: 20px solid transparent;
+	border-top-color: #8080ff;
+	border-bottom: 0;
+	margin-left: -20px;
+	margin-bottom: -20px;
+}
 
 #snackbar {
     visibility: hidden;
-    min-width: 250px;
-    margin-left: -125px;
-   
     color: #fff;
     text-align: center;
-    border-radius: 2px;
     padding: 16px;
-    position: fixed;
     z-index: 1;
-    left: 50%;
-    bottom: 30px;
     font-size: 17px;
+    width: 100%;
+    margin: 0 auto 20px;
 }
-#snackbar.Ganador {
-    background-color: #059F2F;
-}
-#snackbar.Perdedor {
-    background-color: #FF0000;
-}
+
 #snackbar.show {
     visibility: visible;
     -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
@@ -115,4 +118,13 @@ span.psw {
 @keyframes fadeout {
     from {bottom: 30px; opacity: 1;}
     to {bottom: 0; opacity: 0;}
+}
+
+.imagen img{
+    width: 50%;
+    margin-bottom: -25px;
+}
+
+.card-text span{
+    font-weight: bold;;
 }

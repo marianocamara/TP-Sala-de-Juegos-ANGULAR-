@@ -32,10 +32,12 @@ export class AdivinaElNumeroComponent implements OnInit {
     if (this.nuevoJuego.verificar()){
       
       this.enviarJuego.emit(this.nuevoJuego);
-      this.MostarMensaje("Sos un Genio!!!",true);
+      this.MostarMensaje("GANASTE!",true);
       this.nuevoJuego.numeroSecreto=0;
 
     }else{
+
+      
 
       let mensaje:string;
       switch (this.contador) {
@@ -43,31 +45,37 @@ export class AdivinaElNumeroComponent implements OnInit {
           mensaje="No, intento fallido, animo";
           break;
           case 2:
-          mensaje="No,Te estaras Acercando???";
+          mensaje="No,te estaras acercando?";
           break;
           case 3:
-          mensaje="No es, Yo crei que la tercera era la vencida.";
+          mensaje="No es, crei que la tercera era la vencida.";
           break;
           case 4:
-          mensaje="No era el  "+this.nuevoJuego.numeroIngresado;
+          mensaje="No es el  "+this.nuevoJuego.numeroIngresado;
           break;
           case 5:
-          mensaje=" intentos y nada.";
+          mensaje= "Perdiste, se te acabaron los intentos";
           break;
           case 6:
-          mensaje="Afortunado en el amor";
+          mensaje="Afortunado en el amor...";
           break;
       
         default:
             mensaje="Ya le erraste "+ this.contador+" veces";
           break;
       }
-      this.MostarMensaje("#"+this.contador+" "+mensaje+" ayuda :"+this.nuevoJuego.retornarAyuda());
-     
-
+      if (this.contador < 5 ){
+      this.MostarMensaje("#"+this.contador+": "+mensaje+", Tip :"+this.nuevoJuego.retornarAyuda());
+      }else{
+        this.MostarMensaje("#"+this.contador+": "+mensaje);
+        this.enviarJuego.emit(this.nuevoJuego);
+        this.nuevoJuego.numeroSecreto=0;
     }
     console.info("numero Secreto:",this.nuevoJuego.gano);  
   }  
+
+  
+  }
 
   MostarMensaje(mensaje:string="este es el mensaje",ganador:boolean=false) {
     this.Mensajes=mensaje;    
@@ -87,6 +95,7 @@ export class AdivinaElNumeroComponent implements OnInit {
   
    }  
   ngOnInit() {
+    this.contador=0;
   }
 
 }

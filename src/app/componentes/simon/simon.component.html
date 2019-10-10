@@ -1,0 +1,30 @@
+<app-titulo titulo="Intenta seguir el patron de colores y sonidos marcado por el juego."></app-titulo>
+
+<div [ngClass]="{'game-on': start$ | async}">
+        <button class="btn btn-info text-uppercase mt-5 mb-2 shadow-sm play">Jugar</button>
+        <div class="game animated fadeInDown ">
+            <div class="board">
+                <div class="pads">
+                    <div class="pad-row">
+                        <button class="pad pad-0" 
+                                data-pad="0"
+                                [ngClass]="{active: 0 === (activePad$ | async)}"></button>
+                        <button class="pad pad-1" 
+                                data-pad="1"
+                                [ngClass]="{active: 1 === (activePad$ | async)}"></button>
+                    </div>
+                    <div class="pad-row">
+                        <button class="pad pad-2" 
+                                data-pad="2"
+                                [ngClass]="{active: 2 === (activePad$ | async)}"></button>
+                        <button class="pad pad-3" 
+                                data-pad="3"
+                                [ngClass]="{active: 3 === (activePad$ | async)}"></button>
+                    </div>
+                </div>
+            </div>
+            <div class="message"><span>{{message$ | async}}</span></div>
+            <div class="turn">Nivel <strong>{{(turn$ | async)?.level || 1}}</strong></div>
+        </div>
+    </div>
+    

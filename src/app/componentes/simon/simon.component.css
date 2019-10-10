@@ -1,0 +1,106 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+:host .pad {
+    cursor: pointer;
+    width: 200px;
+    height: 200px;
+    margin: 8px;
+    border: 0;
+    outline: 0;
+    transition: opacity 0.2s ease;
+    opacity: 0.8;
+}
+:host .pad.active {
+    opacity: 1;
+}
+:host .pad-0 {
+    background: #ffc107;
+}
+:host .pad-1 {
+    background: #f44336;
+}
+:host .pad-2 {
+    background: #2196f3;
+}
+:host .pad-3 {
+    background: #4caf50;
+}
+:host .game {
+    margin-top: -128px;
+    position: relative;
+    display: none;
+}
+:host .board {
+    width: 400px;
+    height: 400px;
+    position: relative;
+    border-radius: 100%;
+    overflow: hidden;
+    border: 16px #263238 solid;
+    background: #263238;
+    box-shadow: 0px 6px 30px -6px rgba(94, 48, 94, 1);
+}
+:host .pads {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    left: -16px;
+    top: -16px;
+}
+:host .pad-row {
+    display: flex;
+    flex-direction: row;
+}
+:host .turn {
+    width: 100%;
+    height: 64px;
+    font-size: 32px;
+    margin: 64px 0;
+    text-align: center;
+}
+
+.btn{
+    border-radius: 50%;
+    height: 200px;
+    width: 200px;
+    font-size: 30px;
+}
+:host .message {
+    background: #eceff1;
+    height: 128px;
+    font-size: 26px;
+    text-align: center;
+    position: absolute;
+    top: calc(50% - 110px);
+    border-radius: 100%;
+    width: 128px;
+    left: calc(50% - 50px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 16px #263238 solid;
+}
+:host .game-on .play {
+    display: none;
+}
+:host .game-on .game {
+    display: block;
+}
+
+.game.animated.fadeInDown{
+    margin-top: 50px;
+}
+
+
+.resultados {
+    width: 500px;
+    margin: 0 auto;
+    border: 3px solid #4398d1;
+    padding: 20px;
+    border-radius: 10px;
+    background: white;
+}

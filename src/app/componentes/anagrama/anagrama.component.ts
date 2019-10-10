@@ -13,10 +13,9 @@ export class AnagramaComponent implements OnInit {
   letterAnimation = 0;
   timerPromise;
   correctWord = '';
-  words = ["VIOLETAS", "HUEVO", "MANTECA", "FRUTILLA", "JARRON", "ROJO", "VERDE",
-    "PERA", "MEXICO", "ABIERTO", "PAGAR", "BIEN", "PEPINO", "DINERO",
-    "PAZ", "AMOR", "TIEMPO", "AMIGOS", "PERRO", "FLORES", "VIDRIO", "PASTO",
-    "BOTE", "HUMANO", "AUTO", "CABLE", "MUJER", "TELEFONO"];
+  words = ["JUEGO", "AVION", "PROMOCION", "MONEDA", "COMPUTADORA", "CERVEZA", "ESCALAR",
+    "PESCADO", "LAGO", "BOSQUE", "CAMARA", "ZAPATILLA", "SER", "PAIS",
+    "VINOTECA", "MONTAÑA", "JUPITER", "EXTRATERRESTRE", "DIFICIL", "ABURRIDO", "AYUDA"];
 
   constructor() { }
 

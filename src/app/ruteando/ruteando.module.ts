@@ -24,22 +24,24 @@ import { JugadoresListadoComponent } from '../componentes/jugadores-listado/juga
 import { AnagramaComponent } from '../componentes/anagrama/anagrama.component';
 import { TatetiComponent } from '../componentes/tateti/tateti.component';
 import { PiedraPapelTijeraComponent } from '../componentes/piedra-papel-tijera/piedra-papel-tijera.component';
+import { SimonComponent } from '../componentes/simon/simon.component';
 
 
 // declaro donde quiero que se dirija
 const MiRuteo = [
-{path: 'Jugadores' , component: JugadoresListadoComponent},
+{path: 'Jugadores' , component: JugadoresListadoComponent,data: {animation: 'FilterPage'}},
 {path: '' , component: PrincipalComponent},
-{path: 'Login' , component: LoginComponent},
-{path: 'Mapa' , component: MapaDeGoogleComponent},
-{path: 'QuienSoy' , component: QuienSoyComponent},
-{path: 'Registro' , component: RegistroComponent},
-{path: 'Principal' , component: PrincipalComponent},
-{path: 'Listado' , component: ListadoComponent},
+{path: 'Login' , component: LoginComponent,data: {animation: 'Home'}},
+{path: 'Mapa' , component: MapaDeGoogleComponent,data: {animation: 'Home'}},
+{path: 'QuienSoy' , component: QuienSoyComponent,data: {animation: 'FilterPage'}},
+{path: 'Registro' , component: RegistroComponent,data: {animation: 'FilterPage'}},
+{path: 'Principal' , component: PrincipalComponent,data: {animation: 'Home'}},
+{path: 'Listado' , component: ListadoComponent,data: {animation: 'FilterPage'}},
 {path: 'Paises' , component: ListadoDePaisesComponent},
 
+
 { path: 'Juegos' ,
-component: JuegosComponent ,
+component: JuegosComponent , data: {animation: 'FilterPage'},
 children:
      [{path: '' , component: MenuCardComponent},
      {path: 'Adivina' , component: AdivinaElNumeroComponent},
@@ -48,7 +50,8 @@ children:
       {path: 'Agilidad' , component: AgilidadAritmeticaComponent},
       {path: 'Anagrama' , component: AnagramaComponent},
       {path: 'Tateti' , component: TatetiComponent},
-      {path: 'Piedra-papel-tijera' , component: PiedraPapelTijeraComponent}]
+      {path: 'Ppt' , component: PiedraPapelTijeraComponent},
+      {path: 'Simon' , component: SimonComponent}]
 },
 {path: '**' , component: ErrorComponent},
 {path: 'error' , component: ErrorComponent}];

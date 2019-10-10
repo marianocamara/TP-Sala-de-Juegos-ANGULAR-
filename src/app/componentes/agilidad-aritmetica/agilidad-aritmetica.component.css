@@ -4,7 +4,7 @@ input{
     text-align: right;
 }
 .separator{
-        border-bottom: 2px solid #757575;
+    border-bottom: 2px solid #757575;
     width: 50%;
     float: right;
 }
@@ -17,4 +17,17 @@ input{
     border-radius: 10px;
     box-shadow: 10px 10px 15px 0px #c5c5c56e;
     padding:30px;
+    background: white;
+}
+
+@media screen and (max-width: 400px) {
+    .imagen img{
+        width:100%;
+    }
+    .box-s{
+        margin: 20px 45px 45px;
+    }
+    input{
+        font-size: 40px;    
+    }
 }

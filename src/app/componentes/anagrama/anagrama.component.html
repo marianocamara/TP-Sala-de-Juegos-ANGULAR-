@@ -1,24 +1,25 @@
-
+<app-titulo titulo="Intenta formar una palabra a partir de las letras mezcladas"></app-titulo>
 
 <div class="contenedor">
-  <h4>Correctas:</h4>
+  <h4>Palabras correctas:</h4>
   <div id="countScore"><span>{{score}}</span></div>
   <div id="canvas">
     <div id="words">
       <div class="letter fadeIn" *ngFor="let letter of letters; let i = index" [ngClass]="{letterVisible:isLetterVisible(),letterHidden:isLetterHiding(),letterCorrect:isCorrectLetter()}">{{letter}}</div>
     </div>
   </div>
-  <form id="control">
-    <h4 class="text-center">Tiempo: {{seconds}}</h4>
-    <div *ngIf="seconds > 0">
-      <input type="text" name="answer" [(ngModel)]="answer" focus="answer.length === 0" placeholder="Ingrese su suposición"
+  <form id="control text-center">
+    <h4 class="text-center reloj" [ngClass]="{'peligro': seconds <= 10}">{{seconds}}</h4>
+    <div *ngIf="seconds > 0" class="col-10">
+      <input type="text" name="answer" [(ngModel)]="answer" focus="answer.length === 0" placeholder="Ingresar palabra"
         autofocus="autofocus">
     </div>
-    <div>
-      <button *ngIf="seconds > 0" class="btn btn-dark text-uppercase mb-2 rounded-pill shadow-sm" type="submit" (click)="validateWord()">Enviar</button>
-      <button *ngIf="seconds > 0" class="btn btn-dark text-uppercase mb-2 rounded-pill shadow-sm" (click)="nextWord()">Proxima</button>
-      <button *ngIf="seconds === 0" class="btn btn-dark text-uppercase mb-2 rounded-pill shadow-sm" (click)="initGame()">Jugar
+    <div class="col text-center mt-3">
+      <button *ngIf="seconds > 0" class="btn btn-success text-uppercase mr-2 mb-2 " type="submit" (click)="validateWord()">Ingresar</button>
+      <button *ngIf="seconds > 0" class="btn btn-secondary text-uppercase mr-2 mb-2" (click)="nextWord()">Saltear</button>
+      <button *ngIf="seconds === 0" class="btn btn-info text-uppercase mb-2" (click)="initGame()">Jugar
         de nuevo</button>
     </div>
   </form>
 </div>
+

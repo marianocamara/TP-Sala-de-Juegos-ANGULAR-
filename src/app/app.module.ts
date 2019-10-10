@@ -65,6 +65,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatCardModule} from '@angular/material/card';
 import { TatetiComponent } from './componentes/tateti/tateti.component';
 import { PiedraPapelTijeraComponent } from './componentes/piedra-papel-tijera/piedra-papel-tijera.component';
+import { TituloComponent } from './componentes/titulo/titulo.component';
+import { SimonComponent } from './componentes/simon/simon.component';
 
 var config = {
   apiKey: "AIzaSyByZWguTP_-JCZ6rN2iNxDSHXRX6qFpIfA",
@@ -102,7 +104,9 @@ var config = {
     InputJugadoresComponent,
     SexoPipe,
     TatetiComponent,
-    PiedraPapelTijeraComponent
+    PiedraPapelTijeraComponent,
+    TituloComponent,
+    SimonComponent
   ],
   imports: [
     BrowserModule,

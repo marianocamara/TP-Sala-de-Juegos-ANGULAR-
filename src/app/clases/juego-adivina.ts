@@ -26,7 +26,7 @@ export class JuegoAdivina extends  Juego {
       }
       public retornarAyuda() {
         if (this.numeroIngresado < this.numeroSecreto) {
-          return "Falta";
+          return "Te falta";
         }
         return "Te pasate";
       }

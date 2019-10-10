@@ -1,0 +1,32 @@
+
+.divider {
+    width: 100%;
+    max-width: 370px;
+    height: 1px;
+    margin: 40px auto;
+    display: block;
+    position: relative;
+    background: #e5e5e5;
+}
+.svg-triangle-icon-container {
+    width: 22px;
+    height: 15px;
+    overflow: visible!important;
+    left: 50%;
+    margin-left: -11px;
+    margin-top: -6px;
+    display: block;
+    position: absolute;
+}
+.svg-triangle-icon {
+    fill: transparent;
+    stroke: #17a2b8;
+    stroke-width: 3;
+}
+
+@media screen and (max-width: 400px) {
+    .title-block h2{
+      font-size: 20px;
+    padding: 0 20px;
+    }
+  }
