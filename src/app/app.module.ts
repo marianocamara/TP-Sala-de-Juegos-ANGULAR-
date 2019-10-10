@@ -57,7 +57,7 @@ import { SexoPipe } from './pipes/sexo.pipe';
 import { AngularFireModule } from "@angular/fire";
 import { AngularFireAuthModule } from "@angular/fire/auth";
 import { AuthService } from './servicios/auth/auth.service';
-import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFirestore, AngularFirestoreModule } from '@angular/fire/firestore';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import {MatButtonModule} from '@angular/material/button';
@@ -116,7 +116,7 @@ var config = {
     HttpModule,
     AngularFireModule.initializeApp(config),
     AngularFireAuthModule,
-    AngularFirestore,
+    AngularFirestoreModule,
     MatButtonModule,
     MatSnackBarModule,
     MatCardModule,
