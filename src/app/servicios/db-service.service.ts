@@ -19,9 +19,9 @@ export class DbServiceService {
     })
   } 
 
-  GetResults() {
+  GetResults(juego) {
     return new Promise<any>((resolve, reject) => {
-      this.afs.collection('/results').valueChanges().subscribe(snapshots => {
+      this.afs.collection(`${juego}`).valueChanges().subscribe(snapshots => {
         resolve(snapshots)
       })
     })

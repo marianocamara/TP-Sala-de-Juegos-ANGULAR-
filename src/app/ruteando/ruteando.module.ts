@@ -37,6 +37,7 @@ const MiRuteo = [
 {path: 'Registro' , component: RegistroComponent,data: {animation: 'FilterPage'}},
 {path: 'Principal' , component: PrincipalComponent,data: {animation: 'Home'}},
 {path: 'Listado' , component: ListadoComponent,data: {animation: 'FilterPage'}},
+{path: 'Resultados' , component: ListadoDeResultadosComponent,data: {animation: 'Home'}},
 {path: 'Paises' , component: ListadoDePaisesComponent},
 
 
