@@ -68,6 +68,7 @@ import { PiedraPapelTijeraComponent } from './componentes/piedra-papel-tijera/pi
 import { TituloComponent } from './componentes/titulo/titulo.component';
 import { SimonComponent } from './componentes/simon/simon.component';
 import { DbServiceService } from './servicios/db-service.service';
+import { GuardService } from './servicios/guard.service';
 
 var config = {
   apiKey: "AIzaSyByZWguTP_-JCZ6rN2iNxDSHXRX6qFpIfA",
@@ -128,7 +129,7 @@ var config = {
     // importo el ruteo
     // RouterModule.forRoot(MiRuteo)
   ],
-  providers: [ JuegoServiceService, MiHttpService,PaisesService,ArchivosJugadoresService,JugadoresService, AuthService, AngularFirestore, DbServiceService],
+  providers: [ JuegoServiceService, MiHttpService,PaisesService,ArchivosJugadoresService,JugadoresService, AuthService, AngularFirestore, DbServiceService, GuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

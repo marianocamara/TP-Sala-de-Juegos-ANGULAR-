@@ -15,6 +15,8 @@ import {
   generateSolution, LIGHT_DURATION, MESSAGE_DURATION, nextTurn, playSound,
   SOLUTION_DELAY, Turn
 } from './utils'
+import { AuthService } from '../../servicios/auth/auth.service'
+import { DbServiceService } from '../../servicios/db-service.service'
 
 @Component({
   selector: 'app-simon',
@@ -34,6 +36,12 @@ export class SimonComponent implements OnInit {
   // observable of the number of the currently active pad (be it via player clicks
   // or via sequence sample by the game.
   activePad$: Observable<number>
+  usuarioLogueado: any;
+  listadoSimon: Array<any>;
+
+  constructor( public auth: AuthService, private dbService: DbServiceService) {
+    this.usuarioLogueado = JSON.parse(localStorage.getItem('user'));
+  }
 
   ngOnInit() {
     // listen for clicks on the PLAY button
@@ -90,7 +98,8 @@ export class SimonComponent implements OnInit {
     )
 
     // log out the current turn if changed
-    this.turn$.subscribe(turn => console.log(turn))
+    this.turn$.subscribe(turn => console.log(turn));
+    this.turn$.subscribe(turn => this.CargarPuntaje(this.usuarioLogueado, turn.level));
 
     // build the observable of messages do display in reaction to the player clicks
     this.message$ = this.start$.pipe(
@@ -183,6 +192,10 @@ export class SimonComponent implements OnInit {
       // would happen...)
       share()
     )
+  }
+
+  CargarPuntaje( usuario, nivel){
+      this.auth.SetPuntajeSimon(nivel,"simon says", usuario);
   }
 }
 

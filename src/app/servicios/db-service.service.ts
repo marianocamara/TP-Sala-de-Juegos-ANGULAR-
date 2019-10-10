@@ -27,6 +27,14 @@ export class DbServiceService {
     })
   }
 
+  GetResultsUser(juego, usuario) {
+    return new Promise<any>((resolve, reject) => {
+      this.afs.collection(`${juego}/${usuario.uid}`).valueChanges().subscribe(snapshots => {
+        resolve(snapshots)
+      })
+    })
+  }
+
   AddResult(game: any, points: any, win: any) {
     const date = new Date();
     const result = {

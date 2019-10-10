@@ -5,6 +5,7 @@ import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firest
 import { Router } from "@angular/router";
 import { Juego } from '../../clases/juego';
 import * as firebase from 'firebase';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +18,8 @@ export class AuthService {
   constructor(public afs: AngularFirestore,   // Inject Firestore service
     public afAuth: AngularFireAuth, // Inject Firebase auth service
     public router: Router,  
-    public ngZone: NgZone // NgZone service to remove outside scope warning
+    public ngZone: NgZone, // NgZone service to remove outside scope warning
+    public snackBar: MatSnackBar
     ) {
 
    /* Saving user data in localstorage when 
@@ -44,7 +46,10 @@ export class AuthService {
         });
         this.SetUserData(result.user);
       }).catch((error) => {
-        window.alert(error.message)
+        this.snackBar.open('Lo sentimos, ha ocurrido un error. Intenta nuevamente.', '', {
+          duration: 3000
+        });
+        console.log(error.message);
       })
   }
 
@@ -73,14 +78,17 @@ export class AuthService {
         this.SetUserData(result.user);
         this.router.navigate(['/Principal']);
       }).catch((error) => {
-        window.alert(error.message)
+        this.snackBar.open('Lo sentimos, ha ocurrido un error. Intenta nuevamente.', '', {
+          duration: 3000
+        });
+        console.log(error.message);
       })
   }
 
    // Returns true when user is looged in and email is verified
    get isLoggedIn(): boolean {
     const user = JSON.parse(localStorage.getItem('user'));
-    return (user !== null && user.emailVerified !== false) ? true : false;
+    return (user !== null) ? true : false;
   }
 
   
@@ -88,7 +96,7 @@ export class AuthService {
   SignOut() {
     return this.afAuth.auth.signOut().then(() => {
       localStorage.removeItem('user');
-      this.router.navigate(['Login']);
+      this.router.navigate(['Principal']);
     })
   }
 
@@ -132,6 +140,22 @@ export class AuthService {
       jugador: usuario.email.split('@')[0],
       partidas: firebase.firestore.FieldValue.increment(1),
       palabrasAdivinadas: firebase.firestore.FieldValue.increment(cantPalabras),
+    }
+    return userRef.set(userData, {
+      merge: true
+    })
+
+  }
+
+  SetPuntajeSimon(nivel:any, nombre:any, usuario:any) {
+    const date = new Date();
+    const userRef: AngularFirestoreDocument<any> = this.afs.doc(`${nombre}/${usuario.uid}`);
+    const userData: any = {
+      uid: usuario.uid,
+      createdAt: date.toLocaleDateString(),
+      jugador: usuario.email.split('@')[0],
+      partidas: firebase.firestore.FieldValue.increment(1),
+      nivel: nivel,
     }
     return userRef.set(userData, {
       merge: true

@@ -25,24 +25,26 @@ import { AnagramaComponent } from '../componentes/anagrama/anagrama.component';
 import { TatetiComponent } from '../componentes/tateti/tateti.component';
 import { PiedraPapelTijeraComponent } from '../componentes/piedra-papel-tijera/piedra-papel-tijera.component';
 import { SimonComponent } from '../componentes/simon/simon.component';
+import { GuardService } from '../servicios/guard.service';
 
 
 // declaro donde quiero que se dirija
 const MiRuteo = [
-{path: 'Jugadores' , component: JugadoresListadoComponent,data: {animation: 'FilterPage'}},
+{path: 'Jugadores' , component: JugadoresListadoComponent,data: {animation: 'FilterPage'}, canActivate: [GuardService]},
 {path: '' , component: PrincipalComponent},
 {path: 'Login' , component: LoginComponent,data: {animation: 'Home'}},
 {path: 'Mapa' , component: MapaDeGoogleComponent,data: {animation: 'Home'}},
 {path: 'QuienSoy' , component: QuienSoyComponent,data: {animation: 'FilterPage'}},
 {path: 'Registro' , component: RegistroComponent,data: {animation: 'FilterPage'}},
 {path: 'Principal' , component: PrincipalComponent,data: {animation: 'Home'}},
-{path: 'Listado' , component: ListadoComponent,data: {animation: 'FilterPage'}},
-{path: 'Resultados' , component: ListadoDeResultadosComponent,data: {animation: 'Home'}},
+{path: 'Listado' , component: ListadoComponent,data: {animation: 'FilterPage'}, canActivate: [GuardService]},
+{path: 'Resultados' , component: ListadoDeResultadosComponent,data: {animation: 'Home'}, canActivate: [GuardService]},
 {path: 'Paises' , component: ListadoDePaisesComponent},
 
 
 { path: 'Juegos' ,
 component: JuegosComponent , data: {animation: 'FilterPage'},
+canActivate: [GuardService],
 children:
      [{path: '' , component: MenuCardComponent},
      {path: 'Adivina' , component: AdivinaElNumeroComponent},

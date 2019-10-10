@@ -8,7 +8,14 @@ import { AuthService } from '../../servicios/auth/auth.service';
 })
 export class CabeceraComponent implements OnInit {
 
-  constructor(public  authService:  AuthService) { }
+  usuarioLogueado: any;
+  nombre:any;
+
+  constructor(public  authService:  AuthService) {
+
+    if (this.authService.isLoggedIn)
+    this.usuarioLogueado = JSON.parse(localStorage.getItem('user'));
+  }
 
   ngOnInit() {
   }
