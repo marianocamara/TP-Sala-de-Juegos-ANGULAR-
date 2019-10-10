@@ -8,7 +8,7 @@ import { AuthService } from '../../servicios/auth/auth.service';
 })
 export class CabeceraComponent implements OnInit {
 
-  constructor(private  authService:  AuthService) { }
+  constructor(public  authService:  AuthService) { }
 
   ngOnInit() {
   }
